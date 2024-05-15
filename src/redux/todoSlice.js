@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const initialState = {
   tasks: [
@@ -18,8 +18,18 @@ const tasksSlice = createSlice({
   },
   reducers: {
     addTask: {
-      reducer: null,
-      prepare: null,
+      reducer(state, { payload }) {
+        state.tasks.push(payload);
+      },
+      prepare(text) {
+        return {
+          payload: {
+            text,
+            id: nanoid(),
+            completed: false,
+          },
+        };
+      },
     },
     deleteTask(state, { payload }) {
       state.tasks = state.tasks.filter(task => task.id !== payload);
