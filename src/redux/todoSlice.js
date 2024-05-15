@@ -34,8 +34,13 @@ const tasksSlice = createSlice({
     deleteTask(state, { payload }) {
       state.tasks = state.tasks.filter(task => task.id !== payload);
     },
+    toggleCompleted(state, { payload }) {
+      const item = state.tasks.find(task => task.id === payload);
+      if (item) {
+        item.completed = !item.completed;
+      }
+    },
   },
-  toggleCompleted(state, action) {},
 });
 
 export const tasksReducer = tasksSlice.reducer;
