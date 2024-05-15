@@ -5,6 +5,6 @@ import { filterReducer } from './filterSlice';
 export const store = configureStore({
   reducer: {
     tasks: tasksReducer,
-    filter: filterReducer,
+    filters: filterReducer,
   },
 });

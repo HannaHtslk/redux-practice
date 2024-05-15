@@ -15,7 +15,9 @@ const filtersSlice = createSlice({
     selectFilters: state => state.status.all,
   },
   reducers: {
-    setStatusFilter(state, action) {},
+    setStatusFilter(state, { payload }) {
+      state.status = payload;
+    },
   },
 });
 
